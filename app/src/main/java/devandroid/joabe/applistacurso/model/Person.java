@@ -1,12 +1,19 @@
 package devandroid.joabe.applistacurso.model;
 
+import androidx.annotation.NonNull;
+
 public class Person {
     private String name;
     private String secondName;
     private String nameCourse;
     private String numberContact;
 
-    public Person(){}
+    public Person(String name, String secondName, String nameCourse, String numberContact) {
+        this.name = name;
+        this.secondName = secondName;
+        this.nameCourse = nameCourse;
+        this.numberContact = numberContact;
+    }
 
     public String getName() {
         return name;
@@ -38,5 +45,15 @@ public class Person {
 
     public void setNumberContact(String numberContact) {
         this.numberContact = numberContact;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "primeiroNome='" + name + '\'' +
+                ", sobreNome='" + secondName + '\'' +
+                ", cursoDesejado='" + nameCourse + '\'' +
+                ", telefoneContato='" + numberContact + '\'' +
+                '}';
     }
 }
