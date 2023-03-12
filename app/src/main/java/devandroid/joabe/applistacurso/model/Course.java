@@ -1,5 +1,5 @@
 package devandroid.joabe.applistacurso.model;
 
-public class Curso {
+public class Course {
 
 }
