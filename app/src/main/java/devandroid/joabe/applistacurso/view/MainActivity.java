@@ -1,6 +1,7 @@
 package devandroid.joabe.applistacurso.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     EditText editSecondName;
     EditText editCourse;
     EditText editContact;
-
     Button buttonClean;
     Button buttonSave;
     Button buttonFinish;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         person1 = new Person("Joabe", "Rochadel", "Android Development", "+554899090-5555");
 
-        editFirstName =  findViewById(R.id.editFirstName);
+        editFirstName = findViewById(R.id.editFirstName);
         editSecondName = findViewById(R.id.editSecondName);
         editCourse = findViewById(R.id.editCourse);
         editContact = findViewById(R.id.editContact);
