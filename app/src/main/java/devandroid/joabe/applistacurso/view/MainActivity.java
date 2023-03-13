@@ -2,6 +2,7 @@ package devandroid.joabe.applistacurso.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,10 +10,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import devandroid.joabe.applistacurso.R;
+import devandroid.joabe.applistacurso.controller.PersonController;
 import devandroid.joabe.applistacurso.model.Person;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences preferences;
+    public static final String NAME_PREFERENCES = "pref_listavip";
+    PersonController personController;
     Person person1;
     EditText editFirstName;
     EditText editSecondName;
@@ -27,8 +32,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        preferences = getSharedPreferences(NAME_PREFERENCES, 0);
+        SharedPreferences.Editor listaVip = preferences.edit();
+
         person1 = new Person("Joabe", "Rochadel", "Android Development", "+554899090-5555");
 
+        personController = new PersonController();
         editFirstName = findViewById(R.id.editFirstName);
         editSecondName = findViewById(R.id.editSecondName);
         editCourse = findViewById(R.id.editCourse);
@@ -57,6 +66,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "Volte Sempre!", Toast.LENGTH_LONG).show();
+
+                listaVip.putString("primeiroNome", person1.getName());
+                listaVip.putString("segundoNome", person1.getSecondName());
+                listaVip.putString("nomeCurso", person1.getNameCourse());
+                listaVip.putString("numeroContato", person1.getNumberContact());
+
+                listaVip.apply();
             }
         });
 
@@ -68,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 person1.setNumberContact(editContact.getText().toString());
                 person1.setNameCourse(editCourse.getText().toString());
 
-                Toast.makeText(MainActivity.this, "Salvo: " + person1.toString(), Toast.LENGTH_LONG).show();
+                personController.Salvar(person1);
+
             }
         });
 
