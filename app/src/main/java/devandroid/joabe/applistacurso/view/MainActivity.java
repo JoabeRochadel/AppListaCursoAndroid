@@ -35,7 +35,12 @@ public class MainActivity extends AppCompatActivity {
         preferences = getSharedPreferences(NAME_PREFERENCES, 0);
         SharedPreferences.Editor listaVip = preferences.edit();
 
-        person1 = new Person("Joabe", "Rochadel", "Android Development", "+554899090-5555");
+        person1 = new Person();
+
+        person1.setName(preferences.getString("primeiroNome", ""));
+        person1.setSecondName(preferences.getString("segundoNome", ""));
+        person1.setNameCourse(preferences.getString("nomeCurso", ""));
+        person1.setNumberContact(preferences.getString("numeroContato", ""));
 
         personController = new PersonController();
         editFirstName = findViewById(R.id.editFirstName);
@@ -65,7 +70,12 @@ public class MainActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Volte Sempre!", Toast.LENGTH_LONG).show();
+                person1.setName(editFirstName.getText().toString());
+                person1.setSecondName(editSecondName.getText().toString());
+                person1.setNumberContact(editContact.getText().toString());
+                person1.setNameCourse(editCourse.getText().toString());
+
+                personController.Salvar(person1);
 
                 listaVip.putString("primeiroNome", person1.getName());
                 listaVip.putString("segundoNome", person1.getSecondName());
@@ -73,18 +83,15 @@ public class MainActivity extends AppCompatActivity {
                 listaVip.putString("numeroContato", person1.getNumberContact());
 
                 listaVip.apply();
+
+
             }
         });
 
         buttonFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                person1.setName(editFirstName.getText().toString());
-                person1.setSecondName(editSecondName.getText().toString());
-                person1.setNumberContact(editContact.getText().toString());
-                person1.setNameCourse(editCourse.getText().toString());
-
-                personController.Salvar(person1);
+                Toast.makeText(MainActivity.this, "Volte Sempre!", Toast.LENGTH_LONG).show();
 
             }
         });

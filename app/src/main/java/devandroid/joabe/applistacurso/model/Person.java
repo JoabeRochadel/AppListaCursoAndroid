@@ -8,13 +8,6 @@ public class Person {
     private String nameCourse;
     private String numberContact;
 
-    public Person(String name, String secondName, String nameCourse, String numberContact) {
-        this.name = name;
-        this.secondName = secondName;
-        this.nameCourse = nameCourse;
-        this.numberContact = numberContact;
-    }
-
     public String getName() {
         return name;
     }
