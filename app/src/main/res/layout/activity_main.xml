@@ -78,40 +78,65 @@
         app:layout_constraintTop_toBottomOf="@id/editCourse" />
 
     <Button
+        android:id="@+id/buttonFinish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorButton"
+        android:text="@string/button_finish"
+        app:layout_constraintTop_toBottomOf="@+id/buttonClean"
+        tools:ignore="VisualLintButtonSize"
+        tools:layout_editor_absoluteX="-20dp" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/colorButton"
+        android:text="@string/button_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintStart_toEndOf="@+id/buttonClean"
+        app:layout_constraintTop_toBottomOf="@+id/editContact" />
+
+    <Button
         android:id="@+id/buttonClean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="204dp"
         android:background="@color/colorButton"
         android:importantForAutofill="no"
         android:text="@string/button_clean"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editContact" />
 
-    <Button
-        android:id="@+id/buttonSave"
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonClean"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editContact"
+        app:layout_constraintVertical_bias="0.483" />
+
+    <TextView
+        android:id="@+id/txtSpinnerList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/colorButton"
-        android:text="@string/button_save"
+        android:text="Selecione o curso desejado..."
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/buttonClean"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editContact" />
-
-    <Button
-        android:id="@+id/buttonFinish"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@color/colorButton"
-        android:text="@string/button_finish"
-        app:layout_constraintTop_toBottomOf="@+id/buttonClean"
-        tools:ignore="VisualLintButtonSize"
-        tools:layout_editor_absoluteX="16dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
