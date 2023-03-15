@@ -4,18 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.List;
 
 import devandroid.joabe.applistacurso.R;
 import devandroid.joabe.applistacurso.controller.PersonController;
+import devandroid.joabe.applistacurso.controller.RequestedCourseController;
 import devandroid.joabe.applistacurso.model.Person;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String NAME_PREFERENCES = "pref_listavip";
     PersonController personController;
+    RequestedCourseController requestedCourseController;
+    List<String> CoursesNames;
     Person person;
     EditText editFirstName;
     EditText editSecondName;
@@ -25,18 +32,24 @@ public class MainActivity extends AppCompatActivity {
     Button buttonSave;
     Button buttonFinish;
 
+    Spinner spinnerListCourse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         personController = new PersonController(MainActivity.this);
+        requestedCourseController = new RequestedCourseController();
         person = new Person();
         personController.Find(person);
+
+        CoursesNames = requestedCourseController.dataForSpinner();
 
         editFirstName = findViewById(R.id.editFirstName);
         editSecondName = findViewById(R.id.editSecondName);
         editCourse = findViewById(R.id.editCourse);
         editContact = findViewById(R.id.editContact);
+
+        spinnerListCourse = findViewById(R.id.spinner);
 
         buttonClean = findViewById(R.id.buttonClean);
         buttonSave = findViewById(R.id.buttonSave);
@@ -46,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
         editSecondName.setText(person.getSecondName());
         editCourse.setText(person.getNameCourse());
         editContact.setText(person.getNumberContact());
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                                        requestedCourseController.dataForSpinner());
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+
+        spinnerListCourse.setAdapter(adapter);
 
         buttonClean.setOnClickListener(new View.OnClickListener() {
             @Override
