@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_spinner);
         personController = new PersonController(MainActivity.this);
         requestedCourseController = new RequestedCourseController();
         person = new Person();
