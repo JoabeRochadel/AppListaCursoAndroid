@@ -81,10 +81,14 @@ public class MainActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                int position = spinnerListCourse.getSelectedItemPosition();
+
                 person.setName(editFirstName.getText().toString());
                 person.setSecondName(editSecondName.getText().toString());
                 person.setNumberContact(editContact.getText().toString());
                 person.setNameCourse(editCourse.getText().toString());
+                person.setRequestedCourse(CoursesNames.get(position));
 
                 personController.Save(person);
             }
@@ -94,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "Volte Sempre!", Toast.LENGTH_LONG).show();
-
+                finish();
             }
         });
     }
